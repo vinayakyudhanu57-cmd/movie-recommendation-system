@@ -98,6 +98,3 @@ git push -u origin main
 3. Click **Save**. Your web recommender will be live at `https://YOUR_USERNAME.github.io/movie-recommendation-system-r/`.
 
 ---
-
-## Synthetic Dataset Notice
-The dataset contained in `data/movies.csv` consists of **50 fictional movie records** created exclusively for academic demonstration and algorithm testing. Ratings, synopses, and film titles are synthetic and do not represent real-world commercial metrics.
