@@ -1,0 +1,51 @@
+movie_id,title,genre,rating,release_year,description
+1,Echoes of the Cosmos,Sci-Fi|Adventure,8.7,2021,An astrophysicist deciphers a repeating signal originating from deep space.
+2,Silent Melody,Drama|Romance,8.2,2018,A deaf pianist and a street violinist compose an award-winning symphony together.
+3,The Neon Heist,Action|Crime|Thriller,7.9,2022,A team of elite hackers attempts to drain a corrupt cyber-banking conglomerate.
+4,Shadows Over Venice,Mystery|Thriller,7.5,2016,A retired detective unravels an ancient conspiracy amidst the misty canals of Venice.
+5,Starlight Odyssey,Sci-Fi|Adventure|Action,8.9,2023,Astronauts embark on humanity's first interstellar voyage through a stable wormhole.
+6,Laughter Therapy,Comedy|Romance,7.1,2019,Two rival relationship counselors accidentally fall in love during a joint seminar.
+7,Chronicles of Eldoria,Fantasy|Adventure,8.4,2017,A young blacksmith discovers a broken relic capable of restoring peace to divided kingdoms.
+8,The Velvet Secret,Drama|Mystery,7.6,2015,An archivist uncovers hidden love letters that expose a high-society political scandal.
+9,Cybernetic Dawn,Sci-Fi|Action,8.1,2020,In a dystopian metropolis a rogue cyborg fights to liberate sentient machine workers.
+10,Rustic Kitchen,Comedy|Drama,7.8,2021,A gourmet chef leaves city life to revive his grandmother's failing village bakery.
+11,Frozen Horizon,Adventure|Thriller,8.0,2014,Arctic explorers struggle to survive after their research vessel becomes trapped in pack ice.
+12,The Crimson Manor,Horror|Mystery,6.9,2019,Skeptical paranormal investigators spend seven nights in an abandoned Victorian estate.
+13,Guardians of the Wild,Documentary|Adventure,8.8,2022,A cinematic journey following wildlife rangers protecting endangered mountain gorillas.
+14,Midnight Express Lane,Action|Comedy,7.3,2018,An unsuspecting rideshare driver gets pulled into a high-octane mob getaway chase.
+15,Beneath the Surface,Drama|Mystery,7.7,2020,A coastal town confronts long-buried secrets when drought reveals a sunken hamlet.
+16,Quantum Rift,Sci-Fi|Thriller,8.3,2024,Physicists at a particle collider accidentally open a doorway into parallel timelines.
+17,Parisian Sunset,Romance|Drama,7.4,2016,Two foreign exchange students spend one unforgettable summer along the River Seine.
+18,The Iron Bastion,Action|History|Drama,8.5,2017,A besieged garrison defends an ancient fortress against overwhelming medieval forces.
+19,Pixel Pals,Animation|Comedy|Family,8.0,2021,Retro arcade characters unite to save their game cartridge from being deleted.
+20,Dark Water Trench,Sci-Fi|Horror,6.8,2018,Deep-sea marine biologists encounter bioluminescent predators in the Mariana Trench.
+21,Golden Harvest,Drama,8.1,2013,Three generations of farmers battle corporate buyout attempts to keep their ancestral soil.
+22,The Phantom Syndicate,Action|Thriller,7.8,2022,An undercover agent infiltrates a counterfeit art ring operating across European capitals.
+23,Whispering Pines,Mystery|Drama,7.3,2015,A park ranger investigates strange acoustic anomalies occurring deep within protected woods.
+24,Galactic Bounty,Sci-Fi|Comedy|Action,8.2,2023,A mismatched duo of space hunters accidentally rescue an interplanetary diplomat.
+25,Summer of Harmony,Romance|Comedy,7.0,2017,A free-spirited musician and a corporate auditor clash and connect at a music festival.
+26,The Last Alchemist,Fantasy|Mystery,8.3,2020,An apprentice searches for the legendary philosopher's stone to cure an empire-wide plague.
+27,Urban Beats,Drama|Music,7.9,2019,Underground rap artists in Brooklyn compete for a life-altering recording contract.
+28,Desert Mirage,Adventure|Action,7.4,2016,Treasure hunters race against ruthless mercenaries across the Sahara desert.
+29,The Silicon Illusion,Documentary|Thriller,8.6,2021,An investigative expose exploring how social media algorithms influence global elections.
+30,Lover's Knot,Romance|Drama,7.2,2014,Childhood sweethearts meet after a decade apart and question the life choices they made.
+31,Orbital Decay,Sci-Fi|Thriller,8.4,2023,Space station crew members fight to restore propulsion before burning up in the atmosphere.
+32,The Clown's Riddle,Comedy|Mystery,7.0,2018,A clumsy stage clown unintentionally stumbles upon clues that crack a museum theft.
+33,Savage Peak,Action|Adventure,7.7,2015,Mountaineers must navigate treacherous blizzards and hostile terrain to rescue survivors.
+34,Tales of Mythica,Animation|Fantasy|Adventure,8.5,2022,A young sorceress journeys across mythical floating islands to awaken ancient dragons.
+35,Vortex Protocol,Sci-Fi|Action,7.9,2020,A cyber-defense operative uncovers a sinister AI planning to compromise world power grids.
+36,The Antique Watchmaker,Drama|Mystery,8.1,2016,A horologist finds hidden microfilms sealed inside a pocket watch from World War II.
+37,Campfire Nightmares,Horror|Thriller,6.7,2019,College campers realize an urban legend haunting the forest may be terrifyingly real.
+38,Velocity Rush,Action|Thriller,7.5,2021,An illegal street racer is coerced into pulling off high-speed border courier runs.
+39,The Ocean's Whisper,Documentary|Family,8.7,2023,A breathtaking exploration of marine life and coral reefs across the South Pacific.
+40,Love in Translation,Romance|Comedy,7.6,2018,A diplomat and an interpreter find common ground despite cultural and language barriers.
+41,The Clockwork Empire,Fantasy|Sci-Fi,8.2,2022,Steampunk airship captains defend their sky cities from mechanical sky pirates.
+42,Undercover Melody,Comedy|Action,7.2,2017,An uncoordinated FBI agent goes undercover as a lead singer in a traveling pop band.
+43,Echoes of the Trench,History|Drama,8.4,2015,A poignant look into the camaraderie and courage of soldiers during the Great War.
+44,Cyber Street Dogs,Animation|Sci-Fi|Action,8.0,2023,A pack of augmented stray dogs protects vulnerable street orphans in Neo-Tokyo.
+45,The Forgotten Cipher,Mystery|Thriller,7.9,2018,A cryptographer races against time to stop an encrypted countdown broadcast on radio waves.
+46,Highland Serenade,Romance|Drama,7.3,2019,An American novelist seeks solitude in the Scottish Highlands and meets a local historian.
+47,Solaris Drift,Sci-Fi|Drama,8.6,2024,A lone technician on a solar observation satellite discovers an anomaly inside solar flares.
+48,The Jester's Gambit,Comedy|History,7.4,2016,A royal court jester uses quick wit and hilarious blunders to thwart a palace coup.
+49,Haunted Reverie,Horror|Mystery,7.1,2021,A psychologist treating insomnia patients realizes their collective nightmares are shared.
+50,Apex Predator,Action|Adventure|Thriller,7.8,2020,A wildlife tracker guides a rescue team through dense jungle to locate downed pilots.

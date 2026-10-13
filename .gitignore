@@ -1,0 +1,24 @@
+# Sample report document provided by classmate (must not be committed)
+R project report1.docx
+*.docx
+
+# Future second project subfolder placeholder
+project2/
+project_2/
+second_project/
+
+# R environment artifacts
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Operating system artifacts
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Temporary files and logs
+*.tmp
+*.log
+scratch/

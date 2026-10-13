@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="A transparent, content-based Movie Recommendation System built with R programming and an interactive web interface. Uses Jaccard genre similarity and rating-weighted scoring.">
+  <title>Movie Recommendation System | R Programming Academic Project</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#home" class="brand-logo" id="brand-logo-link">
+        <span class="logo-icon">🎬</span>
+        <div class="logo-text">
+          <span class="logo-title">CineMatch R</span>
+          <span class="logo-subtitle">Movie Recommendation System</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active" id="nav-home">Home</a>
+        <a href="#discovery" class="nav-link" id="nav-discovery">Discover</a>
+        <a href="#results" class="nav-link" id="nav-results">Recommendations</a>
+      </nav>
+
+      <div class="header-badges">
+        <a href="#discovery" class="btn btn-sm btn-primary" id="btn-quick-try">Try Engine</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero / Introduction -->
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="academic-tag">
+            <span class="tag-icon">📊</span>
+          </div>
+          <h1 class="hero-title">
+            Smart Content-Based <span class="gradient-text">Movie Recommendation</span> System
+          </h1>
+          <p class="hero-description">
+            A practical, transparent recommendation engine developed in base R and showcased through an interactive web
+            interface. Matches movie genres using <strong>Jaccard Similarity</strong> and ranks them with a balanced
+            <strong>70% genre + 30% rating</strong> scoring model.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#discovery" class="btn btn-lg btn-primary" id="hero-cta-btn">
+              <span>🚀 Launch Recommender</span>
+            </a>
+            <a href="#methodology" class="btn btn-lg btn-secondary" id="hero-methodology-btn">
+              <span>📐 How Scoring Works</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">50</span>
+              <span class="stat-label">Synthetic Movies</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">16</span>
+              <span class="stat-label">Film Genres</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">70 / 30</span>
+              <span class="stat-label">Similarity / Rating Weight</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Base R Compatible</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-preview">
+          <div class="preview-badge">Live Algorithm Snapshot</div>
+          <div class="glass-card preview-card">
+            <div class="preview-card-header">
+              <span class="rec-rank-chip">Rank #1 Match</span>
+              <span class="rating-badge">★ 8.9 / 10</span>
+            </div>
+            <h3 class="preview-movie-title">Starlight Odyssey (2023)</h3>
+            <div class="preview-genres">
+              <span class="genre-tag matched">Sci-Fi</span>
+              <span class="genre-tag matched">Adventure</span>
+              <span class="genre-tag">Action</span>
+            </div>
+            <p class="preview-desc">Astronauts embark on humanity's first interstellar voyage through a stable wormhole.
+            </p>
+            <div class="preview-metric">
+              <div class="metric-info">
+                <span>Final Match Score</span>
+                <span class="metric-value">73.4%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 73.4%;"></div>
+              </div>
+            </div>
+            <div class="preview-explanation">
+              <span class="exp-icon">💡</span>
+              <span><strong>Why recommended:</strong> 66.7% Jaccard genre overlap + 8.9/10 normalized rating.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Movie Discovery & Preferences -->
+    <section class="discovery-section" id="discovery">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Step 1: Set Preferences</span>
+          <h2 class="section-title">Discover Recommended Movies</h2>
+          <p class="section-subtitle">Select your favorite genres, set a minimum acceptable rating, and customize year
+            filters.</p>
+        </div>
+
+        <div class="discovery-grid">
+          <!-- Control Panel -->
+          <div class="glass-panel preference-panel">
+            <form id="recommender-form" onsubmit="return false;">
+              <!-- Genre Selection -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label class="form-label">
+                    <span class="label-icon">🎭</span> 1. Select Preferred Genres
+                  </label>
+                  <div class="genre-quick-actions">
+                    <button type="button" class="btn-text" id="btn-select-all-genres">Select Common</button>
+                    <span class="sep">•</span>
+                    <button type="button" class="btn-text" id="btn-clear-genres">Clear</button>
+                  </div>
+                </div>
+                <div class="genre-chips-container" id="genre-chips-container">
+                  <!-- Dynamically populated chips -->
+                </div>
+                <small class="form-hint" id="genre-count-hint">0 genres selected (select one or more for similarity
+                  ranking)</small>
+              </div>
+
+              <!-- Minimum Rating Slider -->
+              <div class="form-group">
+                <div class="form-label-row">
+                  <label class="form-label" for="rating-slider">
+                    <span class="label-icon">⭐</span> 2. Minimum Rating Threshold
+                  </label>
+                  <span class="range-value-pill" id="rating-value-display">7.0 / 10.0</span>
+                </div>
+                <input type="range" class="form-range" id="rating-slider" min="0" max="9.5" step="0.5" value="7.0">
+                <div class="range-ticks">
+                  <span>0.0 (Any)</span>
+                  <span>5.0 (Average)</span>
+                  <span>7.0 (Good)</span>
+                  <span>8.5+ (Masterpiece)</span>
+                </div>
+              </div>
+
+              <!-- Year Bounds & Results Count -->
+              <div class="form-row-2col">
+                <div class="form-group">
+                  <label class="form-label" for="min-year-select">
+                    <span class="label-icon">📅</span> Min Release Year
+                  </label>
+                  <select class="form-select" id="min-year-select">
+                    <option value="">Any Year</option>
+                    <option value="2010">2010 and later</option>
+                    <option value="2015">2015 and later</option>
+                    <option value="2020">2020 and later</option>
+                    <option value="2022">2022 and later</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="top-n-select">
+                    <span class="label-icon">🔢</span> Recommendations Count
+                  </label>
+                  <select class="form-select" id="top-n-select">
+                    <option value="3">Top 3 Movies</option>
+                    <option value="5" selected>Top 5 Movies</option>
+                    <option value="10">Top 10 Movies</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="form-actions">
+                <button type="button" class="btn btn-primary btn-block" id="btn-get-recommendations">
+                  <span>✨ Get Recommended Movies</span>
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-reset-preferences">
+                  <span>🔄 Reset</span>
+                </button>
+              </div>
+
+              <!-- Data status indicator -->
+              <div class="data-status-alert" id="data-status-alert">
+                <span class="status-indicator">●</span>
+                <span id="data-status-text">Loading dataset from data/movies.csv...</span>
+              </div>
+            </form>
+          </div>
+
+          <!-- Algorithm Inspector Panel -->
+          <div class="glass-panel formula-summary-panel">
+            <h3 class="panel-title">
+              <span class="panel-icon">⚙️</span> Recommendation Pipeline
+            </h3>
+
+            <div class="pipeline-steps">
+              <div class="pipeline-step">
+                <div class="step-badge">1</div>
+                <div class="step-body">
+                  <h4>Hard Filtering</h4>
+                  <p>Eliminates movies with rating &lt; threshold or outside year bounds.</p>
+                </div>
+              </div>
+
+              <div class="pipeline-step">
+                <div class="step-badge">2</div>
+                <div class="step-body">
+                  <h4>Jaccard Genre Similarity</h4>
+                  <p>Calculates overlap between user choices and movie genres: <code>|Intersection| / |Union|</code>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pipeline-step">
+                <div class="step-badge">3</div>
+                <div class="step-body">
+                  <h4>Composite Score</h4>
+                  <p><code>Score = (0.70 × Sim) + (0.30 × Rating / 10)</code>.</p>
+                </div>
+              </div>
+
+              <div class="pipeline-step">
+                <div class="step-badge">4</div>
+                <div class="step-body">
+                  <h4>Ranking &amp; Explanation</h4>
+                  <p>Orders movies descending by score and outputs transparent rationale.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout-card">
+              <span class="callout-icon">💡</span>
+              <p>
+                <strong>Faculty &amp; Viva Note:</strong> Both the R terminal program (<code>R/main.R</code>) and this
+                interactive UI execute the exact same mathematical logic on <code>data/movies.csv</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Recommendation Results -->
+    <section class="results-section" id="results">
+      <div class="container">
+        <div class="section-header">
+          <div class="results-header-row">
+            <div>
+              <span class="section-tag">Step 2: Recommended For You</span>
+              <h2 class="section-title" id="results-heading">Ranked Recommendations</h2>
+            </div>
+            <div class="results-meta-pill" id="results-meta-pill">
+              Ready to generate
+            </div>
+          </div>
+          <p class="section-subtitle" id="results-subheading">
+            Movies ranked by personalized similarity score. Every card explains why it earned its ranking.
+          </p>
+        </div>
+
+        <!-- Dynamic Results Container -->
+        <div class="results-grid" id="results-grid">
+          <!-- Populated by script.js -->
+        </div>
+
+        <!-- Empty State Template -->
+        <div class="empty-state-card" id="empty-state-card" style="display: none;">
+          <div class="empty-state-icon">🔍</div>
+          <h3 class="empty-state-title">No Movies Matched Your Criteria</h3>
+          <p class="empty-state-desc">
+            No films currently satisfy the combination of selected genres, minimum rating, and year range.
+          </p>
+          <div class="empty-state-actions">
+            <button class="btn btn-primary" id="btn-loosen-filters">Lower Rating to 6.5</button>
+            <button class="btn btn-secondary" id="btn-empty-reset">Reset All Filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: About / How Recommendations Work (Viva Prep) -->
+    <section class="methodology-section" id="methodology">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Academic Architecture &amp; Viva Reference</span>
+          <h2 class="section-title">How the Recommendation System Works</h2>
+          <p class="section-subtitle">
+            Essential concepts for your viva examination, faculty demonstration, and project documentation.
+          </p>
+        </div>
+
+        <div class="methodology-grid">
+          <!-- Math & Formula Card -->
+          <div class="methodology-card glass-panel">
+            <div class="card-icon-header">
+              <span class="method-icon">📐</span>
+              <h3>1. Jaccard Similarity Coefficient</h3>
+            </div>
+            <p>
+              Measures similarity between finite sample sets. In our system, set $A$ is the user's preferred genres and
+              set $B$ is the candidate movie's genres:
+            </p>
+            <div class="code-box">
+              <code>J(User, Movie) = |User ∩ Movie| / |User ∪ Movie|</code>
+            </div>
+            <p><strong>Example:</strong></p>
+            <ul class="method-list">
+              <li>User prefers: <code>[Sci-Fi, Adventure]</code> (Size = 2)</li>
+              <li>Movie has: <code>[Sci-Fi, Adventure, Action]</code> (Size = 3)</li>
+              <li>Intersection: <code>{Sci-Fi, Adventure}</code> (Size = 2)</li>
+              <li>Union: <code>{Sci-Fi, Adventure, Action}</code> (Size = 3)</li>
+              <li><strong>Similarity = 2 / 3 = 0.6667 (66.7%)</strong></li>
+            </ul>
+          </div>
+
+          <!-- Scoring Formula Card -->
+          <div class="methodology-card glass-panel">
+            <div class="card-icon-header">
+              <span class="method-icon">⚖️</span>
+              <h3>2. Hybrid Recommendation Scoring</h3>
+            </div>
+            <p>
+              To ensure high-quality recommendations, we balance user genre preference (70%) with the movie's overall
+              quality rating (30%):
+            </p>
+            <div class="code-box">
+              <code>Score = (0.70 × Similarity) + (0.30 × (Rating / 10.0))</code>
+            </div>
+            <p><strong>Why this weighting?</strong></p>
+            <ul class="method-list">
+              <li><strong>Genre Relevance (70%):</strong> Strongly ensures the user receives content in their preferred
+                genre.</li>
+              <li><strong>Normalized Rating (30%):</strong> Acts as a quality tie-breaker between movies with equal
+                genre similarity.</li>
+              <li><strong>Bounded Range:</strong> Score is guaranteed to fall between <code>0.0</code> and
+                <code>1.0</code> (0% to 100%).
+              </li>
+            </ul>
+          </div>
+
+          <!-- R Code Concepts Card -->
+          <div class="methodology-card glass-panel">
+            <div class="card-icon-header">
+              <span class="method-icon">💻</span>
+              <h3>3. Core R Concepts Demonstrated</h3>
+            </div>
+            <p>The project highlights foundational R data science constructs:</p>
+            <ul class="method-list">
+              <li><strong>Data Frames:</strong> Parsing and validating CSV data with <code>read.csv()</code> and base
+                data frames.</li>
+              <li><strong>Subsetting &amp; Filtering:</strong> Boolean vector masking like
+                <code>df[df$rating &gt;= min_rating, ]</code>.
+              </li>
+              <li><strong>String Manipulation:</strong> Splitting pipe-separated genres using <code>strsplit()</code>
+                and trimming with <code>trimws()</code>.</li>
+              <li><strong>Set Operations:</strong> Computing set intersection and union via <code>intersect()</code> and
+                <code>union()</code>.
+              </li>
+              <li><strong>Vectorized Sorting:</strong> Multi-level descending ordering via
+                <code>order(score, rating, decreasing = TRUE)</code>.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Viva FAQ Card -->
+          <div class="methodology-card glass-panel">
+            <div class="card-icon-header">
+              <span class="method-icon">🎓</span>
+              <h3>4. Quick Viva Q&amp;A Guide</h3>
+            </div>
+            <div class="viva-qa">
+              <div class="qa-item">
+                <span class="qa-q">Q: Is this a Machine Learning or AI Model?</span>
+                <span class="qa-a"><strong>A:</strong> No. It is an algorithmic <em>content-based recommendation
+                    system</em> using set similarity and mathematical weighting. Describing it honestly demonstrates
+                  academic integrity and clarity.</span>
+              </div>
+              <div class="qa-item">
+                <span class="qa-q">Q: What is the cold-start problem?</span>
+                <span class="qa-a"><strong>A:</strong> When a new user has no viewing history. Our application handles
+                  this by asking explicit preferences upfront.</span>
+              </div>
+              <div class="qa-item">
+                <span class="qa-q">Q: Why R over Python for this project?</span>
+                <span class="qa-a"><strong>A:</strong> R was specifically designed for data frames, statistical
+                  computing, and matrix operations natively without heavy libraries.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <p class="footer-brand">🎬 Movie Recommendation System</p>
+        <p class="footer-sub">2nd Year B.Tech Artificial Intelligence and Data Science College Project</p>
+      </div>
+      <div class="footer-right">
+        <p>Built with <strong>R (Base R)</strong> &amp; Vanilla JavaScript Web UI</p>
+        <p class="dataset-note">Dataset: 50 synthetic movie records in <code>data/movies.csv</code></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
